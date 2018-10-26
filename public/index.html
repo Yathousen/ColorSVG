@@ -35,11 +35,11 @@
   		<div class="options">
   			<button ng-disabled="generating" class="option option-left" ng-if="icon.index > 0 && icon.index - 1 == $index" ng-click="icon.index = icon.index - 1" ng-repeat="logo in icons.slice(0, icons.length - 1)">
   				<div class="arrow arrow-left"></div>
-  				<p class="text-white">{{logo.id}}</p>
+  				<p class="text-white">{{logo.name}}</p>
   			</button>
   			<button ng-disabled="generating" class="option option-right" ng-if="icon.index < icons.length - 1 && icon.index == $index" ng-click="icon.index = icon.index + 1" ng-repeat="logo in icons.slice(1, icons.length)">
   				<div class="arrow arrow-right"></div>
-  				<p class="text-white">{{logo.id}}</p>
+  				<p class="text-white">{{logo.name}}</p>
   			</button>
   		</div>
   		<!-- Visual Studio Code Icon -->
