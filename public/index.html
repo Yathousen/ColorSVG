@@ -14,6 +14,7 @@
 		<title>ColorSVG - Customize your icons!</title>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-color-picker/3.4.8/angularjs-color-picker.min.css" rel="stylesheet">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 		<link rel="stylesheet" href="./reset.css" type="text/css">
 		<link rel="stylesheet" href="./loaders.min.css" type="text/css">
 		<link rel="stylesheet" href="./style.css" type="text/css">
@@ -33,17 +34,17 @@
   			<h2>Personalize your {{ icons[icon.index ].description }}</h2>
   		</header>
   		<div class="options">
-  			<button ng-disabled="generating" class="option option-left" ng-if="icon.index > 0 && icon.index - 1 == $index" ng-click="icon.index = icon.index - 1" ng-repeat="logo in icons.slice(0, icons.length - 1)">
+  			<button ng-disabled="generating" class="option option-left" ng-if="icon.index > 0 && icon.index - 1 == $index" ng-click="goPrevious()" ng-repeat="logo in icons.slice(0, icons.length - 1)">
   				<div class="arrow arrow-left"></div>
   				<p class="text-white">{{logo.name}}</p>
   			</button>
-  			<button ng-disabled="generating" class="option option-right" ng-if="icon.index < icons.length - 1 && icon.index == $index" ng-click="icon.index = icon.index + 1" ng-repeat="logo in icons.slice(1, icons.length)">
+  			<button ng-disabled="generating" class="option option-right" ng-if="icon.index < icons.length - 1 && icon.index == $index" ng-click="goNext()" ng-repeat="logo in icons.slice(1, icons.length)">
   				<div class="arrow arrow-right"></div>
   				<p class="text-white">{{logo.name}}</p>
   			</button>
   		</div>
   		<!-- Visual Studio Code Icon -->
-  		<svg ng-if="icon.index == 0" viewBox="0 0 1024 1024" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  		<svg id="icon-vscode" ng-show="icon.index == 0" viewBox="0 0 1024 1024" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" ng-class="icon.animation">
   			<defs>
   				<linearGradient id="f" y2="100%">
   					<stop stop-color="#FFF" stop-opacity=".18" offset="0"/>
@@ -81,7 +82,7 @@
   			</g>
   		</svg>
   		<!-- Atom Icon -->
-  		<svg ng-if="icon.index == 1" viewBox="0 0 512 512" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  		<svg id="icon-atom" ng-show="icon.index == 1" viewBox="0 0 512 512" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" ng-class="icon.animation">
   			<circle cx="256" cy="256" r="256" fill="#{{ accent }}"/>
   			<path d="m488.04 254.31c0 128.45-104.15 232.6-232.6 232.6s-232.6-104.15-232.6-232.6c0-128.46 104.14-232.6 232.6-232.6 128.46-1e-3 232.6 104.14 232.6 232.6z" fill="#{{ background }}"/>
   			<g fill="#{{ accent }}">
@@ -90,7 +91,7 @@
   			</g>
   		</svg>
   		<!-- Sublime Text Icon -->
-  		<svg ng-if="icon.index == 2" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448">
+  		<svg id="icon-sublime" ng-show="icon.index == 2" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448" ng-class="icon.animation">
   			<defs>
   				<linearGradient id="sublime-icon-c" y2="100%">
   					<stop stop-color="#{{ accent }}" stop-opacity=".75" offset="1"/>
@@ -113,7 +114,7 @@
   			</g>
   		</svg>
 			<!-- DigitalOcean Icon -->
-			<svg ng-if="icon.index == 3" xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewbox="0 0 250 250" >
+			<svg id="icon-digitalocean" ng-show="icon.index == 3" xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewbox="0 0 250 250" ng-class="icon.animation">
 				<g fill="none" fill-rule="evenodd">
 					<rect width="100%" height="100%" fill="#{{ background }}" fill-rule="nonzero" rx="10"/>
 					<g transform="translate(-50,-10)" >

@@ -26,7 +26,7 @@ angular.module("myApp", ['color.picker']).controller("myCtrl", function ($scope,
         }
     ];
     $scope.icon = {
-        'index': 0
+        'index': 0,
     };
 
     $scope.submit = function () {
@@ -51,5 +51,15 @@ angular.module("myApp", ['color.picker']).controller("myCtrl", function ($scope,
         format: 'hex',
         swatchOnly: true
     };
+
+    $scope.goNext = function (){
+      $scope.icon.index = $scope.icon.index + 1;
+      $scope.icon.animation = 'animated slideInRight faster';
+    }
+
+    $scope.goPrevious = function (){
+      $scope.icon.index = $scope.icon.index - 1;
+      $scope.icon.animation = 'animated slideInLeft faster';
+    }
 
 });
